@@ -1,5 +1,6 @@
 package org.pfragatina.apps;
 
+import org.pfragatina.apps.backoffice.backend.BackofficeBackendApplication;
 import org.pfragatina.shared.infrastructure.cli.ConsoleCommand;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -68,6 +69,7 @@ public class Starter {
 
     private static HashMap<String, Class<?>> applications() {
         HashMap<String, Class<?>> applications = new HashMap<>();
+        applications.put("backend", BackofficeBackendApplication.class);
 
         return applications;
     }
@@ -83,4 +85,5 @@ public class Starter {
 
         return commands.containsKey(applicationName) && commands.get(applicationName).containsKey(commandName);
     }
+
 }

@@ -8,7 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/src/purchase-center" />
+            <option value="$PROJECT_DIR$/src/backoffice" />
             <option value="$PROJECT_DIR$/src/shared" />
           </set>
         </option>

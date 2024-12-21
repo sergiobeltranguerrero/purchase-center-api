@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Arrays;
 
+import org.pfragatina.apps.backoffice.backend.BackofficeBackendApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +20,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.pfragatina.shared.domain.bus.event.DomainEvent;
 import org.pfragatina.shared.domain.bus.event.EventBus;
 
-@SpringBootTest
+@SpringBootTest(classes = BackofficeBackendApplication.class)
 @AutoConfigureMockMvc
 public abstract class ApplicationTestCase {
 

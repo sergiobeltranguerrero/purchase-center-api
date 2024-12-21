@@ -3,5 +3,5 @@ rootProject.name = 'purchase-center-api'
 include ':shared'
 project(':shared').projectDir = new File('src/shared')
 
-include ':purchase-center'
-project(':purchase-center').projectDir = new File('src/purchase-center')
+include ':backoffice'
+project(':backoffice').projectDir = new File('src/backoffice')

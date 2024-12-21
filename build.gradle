@@ -163,7 +163,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.1.5'
 
     implementation project(":shared")
-    implementation project(":purchase-center")
+    implementation project(":backoffice")
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.5'
     testImplementation project(":shared").sourceSets.test.output
