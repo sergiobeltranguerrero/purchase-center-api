@@ -1,0 +1,13 @@
+
+POST http://localhost:8030/inscriptions
+Content-Type: application/json
+
+{
+  "id" : "0f0b1dea-694d-40aa-b041-a31c20978757",
+  "name": "Sense Esme",
+  "memberNumber": 8,
+  "isDouble": false
+}
+###
+
+GET http://localhost:8030/inscriptions/0f0b1dea-694d-40aa-b041-a31c20978757

@@ -96,7 +96,7 @@ public final class HibernateConfigurationFactory {
         String[] files = new File(path).list((current, name) -> new File(current, name).isDirectory());
 
         if (null == files) {
-            path  = "./main/org/pfragatina/" + contextName + "/";
+            path = "./main/org/pfragatina/" + contextName + "/";
             files = new File(path).list((current, name) -> new File(current, name).isDirectory());
         }
 
@@ -110,7 +110,7 @@ public final class HibernateConfigurationFactory {
     }
 
     private String[] mappingFilesIn(String path) {
-		List<String> fileList = new ArrayList<>();
+        List<String> fileList = new ArrayList<>();
 
 		String[] hbmFiles = new File(path).list((current, name) -> new File(current, name).getName().contains(".hbm.xml"));
         String[] ormFiles = new File(path).list((current, name) -> new File(current, name).getName().contains(".orm.xml"));
@@ -131,6 +131,8 @@ public final class HibernateConfigurationFactory {
         hibernateProperties.put(AvailableSettings.SHOW_SQL, "false");
         hibernateProperties.put(AvailableSettings.DIALECT, "org.hibernate.dialect.MySQLDialect");
         hibernateProperties.put(AvailableSettings.TRANSFORM_HBM_XML, true);
+        // Enabled logs
+        hibernateProperties.put(AvailableSettings.USE_SQL_COMMENTS, true);
 
         return hibernateProperties;
     }

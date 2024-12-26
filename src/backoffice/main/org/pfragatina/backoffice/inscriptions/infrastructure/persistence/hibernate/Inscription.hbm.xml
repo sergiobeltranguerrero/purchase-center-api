@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="org.pfragatina.backoffice.inscriptions.domain.Inscription" table="inscriptions">
+        <composite-id name="id" class="org.pfragatina.backoffice.inscriptions.domain.InscriptionId" access="field">
+            <key-property column="id" name="value" length="36" access="field" />
+        </composite-id>
+
+        <component name="name" class="org.pfragatina.backoffice.inscriptions.domain.InscriptionName" access="field">
+            <property name="value" column="name" type="string" access="field" />
+        </component>
+
+        <component name="price" class="org.pfragatina.backoffice.inscriptions.domain.InscriptionPrice" access="field">
+            <property name="value" column="price" type="double" access="field" />
+        </component>
+
+        <component name="memberNumber" class="org.pfragatina.backoffice.inscriptions.domain.InscriptionMemberNumber" access="field">
+            <property name="value" column="member_number" type="integer" access="field" />
+        </component>
+
+        <component name="isDouble" class="org.pfragatina.backoffice.inscriptions.domain.InscriptionIsDouble" access="field">
+            <property name="value" column="is_double" type="boolean" access="field" />
+        </component>
+    </class>
+</hibernate-mapping>

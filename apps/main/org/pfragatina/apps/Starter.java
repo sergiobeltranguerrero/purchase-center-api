@@ -69,7 +69,7 @@ public class Starter {
 
     private static HashMap<String, Class<?>> applications() {
         HashMap<String, Class<?>> applications = new HashMap<>();
-        applications.put("backend", BackofficeBackendApplication.class);
+        applications.put("backoffice_backend", BackofficeBackendApplication.class);
 
         return applications;
     }

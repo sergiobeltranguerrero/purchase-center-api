@@ -11,7 +11,7 @@ import java.util.HashMap;
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ComponentScan(
         includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
-        value = {"org.pfragatina.shared", "org.pfragatina.backend", "org.pfragatina.apps.backoffice.backend"}
+        value = {"org.pfragatina.shared", "org.pfragatina.backoffice", "org.pfragatina.apps.backoffice.backend"}
 )
 public class BackofficeBackendApplication {
 

@@ -60,26 +60,26 @@ public final class HibernateCriteriaConverter<T> {
     }
 
     private Predicate equalsPredicateTransformer(Filter filter, Root<T> root) {
-        return builder.equal(root.get(filter.field().value()), filter.value().value());
+        return builder.equal(root.get(filter.field().value()).get("value"), filter.value().value());
     }
 
     private Predicate notEqualsPredicateTransformer(Filter filter, Root<T> root) {
-        return builder.notEqual(root.get(filter.field().value()), filter.value().value());
+        return builder.notEqual(root.get(filter.field().value()).get("value"), filter.value().value());
     }
 
     private Predicate greaterThanPredicateTransformer(Filter filter, Root<T> root) {
-        return builder.greaterThan(root.get(filter.field().value()), filter.value().value());
+        return builder.greaterThan(root.get(filter.field().value()).get("value"), filter.value().value());
     }
 
     private Predicate lowerThanPredicateTransformer(Filter filter, Root<T> root) {
-        return builder.lessThan(root.get(filter.field().value()), filter.value().value());
+        return builder.lessThan(root.get(filter.field().value()).get("value"), filter.value().value());
     }
 
     private Predicate containsPredicateTransformer(Filter filter, Root<T> root) {
-        return builder.like(root.get(filter.field().value()), String.format("%%%s%%", filter.value().value()));
+        return builder.like(root.get(filter.field().value()).get("value"), String.format("%%%s%%", filter.value().value()));
     }
 
     private Predicate notContainsPredicateTransformer(Filter filter, Root<T> root) {
-        return builder.notLike(root.get(filter.field().value()), String.format("%%%s%%", filter.value().value()));
+        return builder.notLike(root.get(filter.field().value()).get("value"), String.format("%%%s%%", filter.value().value()));
     }
 }

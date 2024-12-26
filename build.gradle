@@ -61,7 +61,6 @@ allprojects {
         implementation 'org.apache.tomcat:tomcat-dbcp:10.1.15'
         implementation 'com.sun.xml.bind:jaxb-impl:4.0.4'
         implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.1'
-        implementation 'org.freemarker:freemarker-gae:2.3.32'
         implementation 'org.reflections:reflections:0.10.2'
         implementation 'com.google.guava:guava:31.0.1-jre'
         implementation 'org.springframework.boot:spring-boot-starter-amqp'

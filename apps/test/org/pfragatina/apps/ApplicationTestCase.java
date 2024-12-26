@@ -55,6 +55,14 @@ public abstract class ApplicationTestCase {
 			.andExpect(content().string(""));
 	}
 
+	protected void assertRequestWithBody(String method, String endpoint, String body, Integer expectedStatusCode,
+										 String expectedResponse) throws Exception {
+		mockMvc
+				.perform(request(HttpMethod.valueOf(method), endpoint).content(body).contentType(APPLICATION_JSON))
+				.andExpect(status().is(expectedStatusCode))
+				.andExpect(content().string(expectedResponse));
+	}
+
 	protected void assertRequest(String method, String endpoint, Integer expectedStatusCode) throws Exception {
 		mockMvc
 			.perform(request(HttpMethod.valueOf(method), endpoint))
