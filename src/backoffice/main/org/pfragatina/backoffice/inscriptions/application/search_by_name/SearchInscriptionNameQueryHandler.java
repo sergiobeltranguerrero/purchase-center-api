@@ -1,6 +1,7 @@
 package org.pfragatina.backoffice.inscriptions.application.search_by_name;
 
 import org.pfragatina.backoffice.inscriptions.application.InscriptionsResponse;
+import org.pfragatina.backoffice.inscriptions.domain.InscriptionName;
 import org.pfragatina.shared.domain.Service;
 import org.pfragatina.shared.domain.bus.query.QueryHandler;
 
@@ -15,6 +16,6 @@ public final class SearchInscriptionNameQueryHandler implements QueryHandler<Sea
 
     @Override
     public InscriptionsResponse handle(SearchInscriptionNameQuery query) {
-        return searcher.search(query.name());
+        return searcher.search(new InscriptionName(query.name()));
     }
 }

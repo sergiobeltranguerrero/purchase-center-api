@@ -20,25 +20,20 @@ public final class InscriptionCreator {
         this.queryBus = queryBus;
     }
 
-    public void create(String id, String name, Integer integer, boolean isDouble) {
+    public void create(InscriptionId id, InscriptionName name, InscriptionMemberNumber memberNumber,
+                       InscriptionIsDouble isDouble) {
         ensureInscriptionNameIsUnique(name);
 
-        InscriptionId inscriptionId = new InscriptionId(id);
-        InscriptionName inscriptionName = new InscriptionName(name);
-        InscriptionMemberNumber inscriptionMemberNumber = new InscriptionMemberNumber(integer);
-        InscriptionIsDouble inscriptionIsDouble = new InscriptionIsDouble(isDouble);
-
-        Inscription inscription = Inscription.create(inscriptionId, inscriptionName,
-                inscriptionMemberNumber, inscriptionIsDouble);
+        Inscription inscription = Inscription.create(id, name, memberNumber, isDouble);
 
         repository.save(inscription);
         eventBus.publish(inscription.pullDomainEvents());
     }
 
-    private void ensureInscriptionNameIsUnique(String name) {
-        InscriptionsResponse response = queryBus.ask(new SearchInscriptionNameQuery(name));
+    private void ensureInscriptionNameIsUnique(InscriptionName name) {
+        InscriptionsResponse response = queryBus.ask(new SearchInscriptionNameQuery(name.value()));
         if (!response.inscriptions().isEmpty()) {
-            throw new InscriptionNameAlreadyExists(name);
+            throw new InscriptionNameAlreadyExists(name.value());
         }
     }
 }

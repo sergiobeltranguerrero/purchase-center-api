@@ -2,6 +2,7 @@ package org.pfragatina.backoffice.inscriptions.application.search_by_name;
 
 import org.pfragatina.backoffice.inscriptions.application.InscriptionResponse;
 import org.pfragatina.backoffice.inscriptions.application.InscriptionsResponse;
+import org.pfragatina.backoffice.inscriptions.domain.InscriptionName;
 import org.pfragatina.backoffice.inscriptions.domain.InscriptionRepository;
 import org.pfragatina.shared.domain.Service;
 import org.pfragatina.shared.domain.criteria.Criteria;
@@ -21,14 +22,14 @@ public final class InscriptionNameSearcher {
         this.repository = repository;
     }
 
-    public InscriptionsResponse search(String name) {
+    public InscriptionsResponse search(InscriptionName name) {
         // Incluye explícitamente el campo interno del Value Object
         Filters filters = Filters.fromValues(
                 new ArrayList<>() {{
                     add(new HashMap<>() {{
                         put("field", "name");
                         put("operator", "=");
-                        put("value", name);
+                        put("value", name.value());
                     }});
                 }}
         );
