@@ -1,5 +1,7 @@
 package org.pfragatina.apps.backoffice.backend;
 
+import org.pfragatina.apps.backoffice.backend.command.ConsumeMySqlDomainEventsCommand;
+import org.pfragatina.apps.backoffice.backend.command.ConsumeRabbitMqDomainEventsCommand;
 import org.pfragatina.shared.domain.Service;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -18,6 +20,8 @@ public class BackofficeBackendApplication {
     public static HashMap<String, Class<?>> commands() {
         return new HashMap<String, Class<?>>() {
             {
+                put("domain-events:mysql:consume", ConsumeMySqlDomainEventsCommand.class);
+                put("domain-events:rabbitmq:consume", ConsumeRabbitMqDomainEventsCommand.class);
             }
         };
     }

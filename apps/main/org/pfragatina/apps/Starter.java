@@ -1,6 +1,8 @@
 package org.pfragatina.apps;
 
 import org.pfragatina.apps.backoffice.backend.BackofficeBackendApplication;
+import org.pfragatina.apps.backoffice.backend.command.ConsumeRabbitMqDomainEventsCommand;
+import org.pfragatina.shared.infrastructure.bus.event.rabbitmq.RabbitMqDomainEventsConsumer;
 import org.pfragatina.shared.infrastructure.cli.ConsoleCommand;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
@@ -34,10 +36,20 @@ public class Starter {
 
         ConfigurableApplicationContext context = app.run(args);
 
-        if (!isServerCommand) {
-            ConsoleCommand command = (ConsoleCommand) context.getBean(commands().get(applicationName).get(commandName));
 
-            command.execute(Arrays.copyOfRange(args, 2, args.length));
+        if (isServerCommand) {
+            executeCommand(context, applicationName, "domain-events:rabbitmq:consume");
+        } else {
+            executeCommand(context, applicationName, commandName, Arrays.copyOfRange(args, 2, args.length));
+        }
+    }
+
+    private static void executeCommand(ConfigurableApplicationContext context, String applicationName, String commandName, String... args) {
+        try {
+            ConsoleCommand command = (ConsoleCommand) context.getBean(commands().get(applicationName).get(commandName));
+            command.execute(args);
+        } catch (Exception e) {
+            throw new RuntimeException(String.format("Failed to execute command <%s> for application <%s>", commandName, applicationName), e);
         }
     }
 
@@ -76,6 +88,7 @@ public class Starter {
 
     private static HashMap<String, HashMap<String, Class<?>>> commands() {
         HashMap<String, HashMap<String, Class<?>>> commands = new HashMap<>();
+        commands.put("backoffice_backend", BackofficeBackendApplication.commands());
 
         return commands;
     }

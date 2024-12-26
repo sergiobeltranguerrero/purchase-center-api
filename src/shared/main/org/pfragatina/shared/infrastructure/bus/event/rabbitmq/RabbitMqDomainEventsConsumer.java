@@ -1,5 +1,6 @@
 package org.pfragatina.shared.infrastructure.bus.event.rabbitmq;
 
+import org.pfragatina.shared.domain.DomainError;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageBuilder;
 import org.springframework.amqp.core.MessagePropertiesBuilder;
@@ -69,11 +70,16 @@ public final class RabbitMqDomainEventsConsumer {
         try {
             subscriberOnMethod.invoke(subscriber, domainEvent);
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException error) {
-            throw new Exception(String.format(
-                "The subscriber <%s> should implement a method `on` listening the domain event <%s>",
-                queue,
-                domainEvent.eventName()
-            ));
+            Throwable cause = error.getCause();
+            if (cause instanceof DomainError) {
+                handleConsumptionError(message, queue);
+            } else {
+                throw new Exception(String.format(
+                        "The subscriber <%s> should implement a method `on` listening the domain event <%s>",
+                        queue,
+                        domainEvent.eventName()
+                ));
+            }
         } catch (Exception error) {
             handleConsumptionError(message, queue);
         }
