@@ -23,9 +23,6 @@ jobs:
               echo "Waiting for database connection..."
               sleep 2
           done
-          
-      - name: 🔍 Debug Gradle Wrapper
-        run: docker exec pfragatina-purchase-center-test-server ls -l /app/gradle/wrapper
 
       - name: 🔦 Lint
         run: make lint
