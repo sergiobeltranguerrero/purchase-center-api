@@ -4,14 +4,15 @@ import org.pfragatina.shared.infrastructure.bus.event.mysql.MySqlDomainEventsCon
 import org.pfragatina.shared.infrastructure.cli.ConsoleCommand;
 
 public final class ConsumeMySqlDomainEventsCommand extends ConsoleCommand {
-    private final MySqlDomainEventsConsumer consumer;
 
-    public ConsumeMySqlDomainEventsCommand(MySqlDomainEventsConsumer consumer) {
-        this.consumer = consumer;
-    }
+	private final MySqlDomainEventsConsumer consumer;
 
-    @Override
-    public void execute(String[] args) {
-        consumer.consume();
-    }
+	public ConsumeMySqlDomainEventsCommand(MySqlDomainEventsConsumer consumer) {
+		this.consumer = consumer;
+	}
+
+	@Override
+	public void execute(String[] args) {
+		consumer.consume();
+	}
 }
