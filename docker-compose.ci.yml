@@ -27,8 +27,6 @@ services:
         context: .
         dockerfile: Dockerfile
     restart: unless-stopped
-    env_file:
-      - apps/main/resources/.env.ci
     volumes:
       - .:/app:delegate
     depends_on:
