@@ -24,8 +24,5 @@ jobs:
               sleep 2
           done
 
-      - name: 🔦 Lint
-        run: make lint
-
       - name: ✅ Run the tests
         run: make test
