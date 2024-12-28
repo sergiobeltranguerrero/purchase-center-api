@@ -24,5 +24,11 @@ jobs:
               sleep 2
           done
 
+      - name: wrapper gradle
+        run: make wrapper
+
+      - name: 🔦 Lint
+        run: make lint
+
       - name: ✅ Run the tests
         run: make test

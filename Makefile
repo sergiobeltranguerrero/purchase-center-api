@@ -15,6 +15,9 @@ run-tests:
 test:
 	@docker exec pfragatina-purchase-center-test-server ./gradlew test --warning-mode all
 
+wrapper:
+	@docker exec pfragatina-purchase-center-test-server ./gradlew wrapper --warning-mode all
+
 run:
 	@./gradlew :run
 
