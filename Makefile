@@ -19,9 +19,6 @@ test:
 run:
 	@./gradlew :run
 
-cat-env:
-	@docker exec pfragatina-purchase-center-test-server cat /app/apps/main/resources/.env
-
 ping-mysql:
 	@docker exec pfragatina-mysql mysqladmin --user=root --password=pfr4g4t1n4 --host "127.0.0.1" ping --silent
 
