@@ -24,6 +24,9 @@ jobs:
               sleep 2
           done
 
+      - name: Cat env file
+        run: make cat-env
+
       - name: 🔦 Lint
         run: make lint
 
