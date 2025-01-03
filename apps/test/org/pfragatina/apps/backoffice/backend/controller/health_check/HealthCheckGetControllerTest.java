@@ -1,4 +1,4 @@
-package org.pfragatina.apps.backoffice.controller.health_check;
+package org.pfragatina.apps.backoffice.backend.controller.health_check;
 
 import org.junit.jupiter.api.Test;
 

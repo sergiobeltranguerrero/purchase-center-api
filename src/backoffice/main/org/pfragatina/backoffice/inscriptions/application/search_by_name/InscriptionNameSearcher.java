@@ -36,7 +36,7 @@ public final class InscriptionNameSearcher {
         Criteria criteria = new Criteria(filters, Order.desc("name"), Optional.of(10), Optional.of(0));
 
         return new InscriptionsResponse(repository
-                .matching(criteria)
+                .matching(criteria).data()
                 .stream()
                 .map(InscriptionResponse::fromAggregate)
                 .collect(Collectors.toList()));

@@ -12,6 +12,7 @@ import org.pfragatina.backoffice.inscriptions.domain.InscriptionName;
 import org.pfragatina.backoffice.inscriptions.domain.InscriptionRepository;
 import org.pfragatina.shared.domain.criteria.Criteria;
 import org.pfragatina.shared.infrastructure.UnitTestCase;
+import org.pfragatina.shared.infrastructure.hibernate.PaginatedResult;
 
 import java.util.Collections;
 import java.util.List;
@@ -49,7 +50,7 @@ public abstract class InscriptionsModuleUnitTestCase extends UnitTestCase {
                 .thenReturn(InscriptionsResponseMother.create(Collections.singletonList(InscriptionResponseMother.fromInscription(inscription))));
     }
 
-    public void shouldSearchCriteria( List<Inscription> expectedInscriptions) {
+    public void shouldSearchCriteria( PaginatedResult<Inscription> expectedInscriptions) {
         Mockito.when(repository.matching(any(Criteria.class))).thenReturn(expectedInscriptions);
     }
 

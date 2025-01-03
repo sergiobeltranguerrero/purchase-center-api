@@ -59,8 +59,8 @@ public class MySqlInscriptionRepositoryTest extends InscriptionModuleInfrastruct
         );
         Criteria criteria = new Criteria(filters, Order.desc("name"), Optional.of(10), Optional.of(0));
 
-        assertEquals(1, repository.matching(criteria).size());
-        assertEquals(inscription, repository.matching(criteria).getFirst());
+        assertEquals(1, repository.matching(criteria).data().size());
+        assertEquals(inscription, repository.matching(criteria).data().getFirst());
 
     }
 }

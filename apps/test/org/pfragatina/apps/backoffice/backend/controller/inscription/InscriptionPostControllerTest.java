@@ -1,11 +1,11 @@
-package org.pfragatina.apps.backoffice.controller.inscription;
+package org.pfragatina.apps.backoffice.backend.controller.inscription;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import org.pfragatina.apps.backoffice.BackofficeAplicationTestCase;
+import org.pfragatina.apps.backoffice.backend.BackofficeBackendApplicationTestCase;
 
-public final class InscriptionPostControllerTest extends BackofficeAplicationTestCase {
+public final class InscriptionPostControllerTest extends BackofficeBackendApplicationTestCase {
 
 	@Test
 	@DisplayName("Create a valid inscription")

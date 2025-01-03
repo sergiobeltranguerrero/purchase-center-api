@@ -1,8 +1,8 @@
 package org.pfragatina.backoffice.inscriptions.domain;
 
 import org.pfragatina.shared.domain.criteria.Criteria;
+import org.pfragatina.shared.infrastructure.hibernate.PaginatedResult;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface InscriptionRepository {
@@ -11,6 +11,6 @@ public interface InscriptionRepository {
 
     Optional<Inscription> search(InscriptionId id);
 
-    List<Inscription> matching(Criteria criteria);
+    PaginatedResult<Inscription> matching(Criteria criteria);
 
 }

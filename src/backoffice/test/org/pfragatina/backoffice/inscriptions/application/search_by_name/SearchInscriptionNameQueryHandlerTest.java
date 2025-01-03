@@ -9,6 +9,7 @@ import org.pfragatina.backoffice.inscriptions.application.InscriptionsResponse;
 import org.pfragatina.backoffice.inscriptions.application.InscriptionsResponseMother;
 import org.pfragatina.backoffice.inscriptions.domain.Inscription;
 import org.pfragatina.backoffice.inscriptions.domain.InscriptionMother;
+import org.pfragatina.shared.infrastructure.hibernate.PaginatedResult;
 
 import java.util.Collections;
 
@@ -32,7 +33,7 @@ public final class SearchInscriptionNameQueryHandlerTest extends InscriptionsMod
                 InscriptionsResponseMother.create(Collections.singletonList(InscriptionResponseMother.fromInscription(inscription)));
         SearchInscriptionNameQuery query = SearchInscriptionNameQueryMother.create(inscription.name().value());
 
-        shouldSearchCriteria(Collections.singletonList(inscription));
+        shouldSearchCriteria(new PaginatedResult<>(Collections.singletonList(inscription), 1L));
 
         InscriptionsResponse result = handler.handle(query);
 

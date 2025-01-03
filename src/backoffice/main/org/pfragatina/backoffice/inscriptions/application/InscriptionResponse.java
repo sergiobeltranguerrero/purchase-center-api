@@ -3,6 +3,7 @@ package org.pfragatina.backoffice.inscriptions.application;
 import org.pfragatina.backoffice.inscriptions.domain.Inscription;
 import org.pfragatina.shared.domain.bus.query.Response;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 
@@ -24,6 +25,16 @@ public final class InscriptionResponse implements Response {
     public static InscriptionResponse fromAggregate(Inscription inscription) {
         return new InscriptionResponse(inscription.id().value(), inscription.name().value(),
                 inscription.price().value(), inscription.memberNumber().value(), inscription.isDouble().value());
+    }
+
+    public static HashMap<String, String> toPrimitives(InscriptionResponse inscription) {
+        HashMap<String, String> response = new HashMap<>();
+        response.put("id", inscription.id());
+        response.put("name", inscription.name());
+        response.put("price", String.valueOf(inscription.price()));
+        response.put("memberNumber", String.valueOf(inscription.memberNumber()));
+        response.put("isDouble", String.valueOf(inscription.isDouble()));
+        return response;
     }
 
     public String id() {
